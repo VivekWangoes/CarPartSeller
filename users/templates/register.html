@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <!-- Breadcrumb End -->
+    <div class="breadcrumb-option set-bg" data-setbg="{% static 'img/breadcrumb-bg.jpg' %}">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="breadcrumb__text">
+                        <h2 class="text-danger">Contact Us</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb Begin -->
+
+    <!-- Contact Section Begin -->
+    <section class="contact spad">
+        <div class="container">
+            <div class="row"> 
+            <div class="col-3"></div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="contact__form">
+                        <form action="#" method="post">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <input type="text" placeholder="First Name" name="first_name" required>
+                                </div>
+                                <div class="col-lg-6">
+                                    <input type="text" placeholder="Last Name" name="last_name" required>
+                                </div>
+                                <div class="col-lg-12">
+                                    <input type="email" placeholder="Email" name="email" required>
+                                </div>
+                                <div class="col-lg-12">
+                                    <input type="number" placeholder="Mobile Number" maxlength="10" name="phone_no" required>
+                                </div>
+                                <div class="col-lg-12">
+                                    <input type="password" placeholder="Password" name="password" required>
+                                </div>
+                            </div>
+                            <div class="col-3"></div>
+                            <button type="submit" class="site-btn">Register</button>
+                            <div class="col-6 mt-2">If already have account ? 
+                                <a class="text-primary" href="{% url 'login' %}" >login</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Contact Section End -->
+
+   
+{% endblock content %}
+
+{% block script %}
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script type="text/javascript">
+    {% if messages %}
+        {% for message in messages %}
+        Swal.fire(
+        '',
+        '{{ message }}',
+        '{{ message.tags }}'
+        )
+        {% endfor %}
+    {% endif %}
+    </script> 
+
+{% endblock %}
